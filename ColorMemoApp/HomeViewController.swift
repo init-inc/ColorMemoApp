@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var memoDataList: [MemoData] = []
@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
+        tableView.delegate = self
         
         setMemoData()
     }
