@@ -39,4 +39,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.detailTextLabel?.text = "\(memo.recordDate)"
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: セルタップ時に画面遷移処理を追加
+    }
 }
