@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         
         setMemoData()
+        setNavigationBarButton()
     }
     
     func setMemoData() {
@@ -31,6 +32,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let memo = MemoData(text: "このメモは\(i)番目です！", recordDate: Date())
             memoDataList.append(memo)
         }
+    }
+    
+    func setNavigationBarButton() {
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapAddButton))
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    @objc func tapAddButton() {
+        print("👀tapAddButton")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
