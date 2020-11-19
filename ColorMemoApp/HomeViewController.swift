@@ -42,7 +42,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let memoDetailViewController = storyboard.instantiateViewController(withIdentifier: "MemoDetailViewController")
+        let memoDetailViewController = storyboard.instantiateViewController(withIdentifier: "MemoDetailViewController") as! MemoDetailViewController
+        let memo = memoDataList[indexPath.row]
+        memoDetailViewController.configure(text: memo.text, recordDate: memo.recordDate)
         navigationController?.pushViewController(memoDetailViewController, animated: true)
     }
 }
