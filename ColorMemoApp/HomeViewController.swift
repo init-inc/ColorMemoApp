@@ -11,6 +11,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     var memoDataList: [MemoData] = []
+    var dateFormat: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        return dateFormatter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +41,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         let memo = memoDataList[indexPath.row]
         cell.textLabel?.text = memo.text
-        cell.detailTextLabel?.text = "\(memo.recordDate)"
+        cell.detailTextLabel?.text = dateFormat.string(from: memo.recordDate)
         return cell
     }
     
