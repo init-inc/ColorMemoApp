@@ -41,6 +41,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: セルタップ時に画面遷移処理を追加
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let memoDetailViewController = storyboard.instantiateViewController(withIdentifier: "MemoDetailViewController")
+        navigationController?.pushViewController(memoDetailViewController, animated: true)
     }
 }

@@ -58,7 +58,7 @@
         <!--Memo Detail View Controller-->
         <scene sceneID="KfW-JW-F1O">
             <objects>
-                <viewController id="MxZ-OH-VRG" customClass="MemoDetailViewController" customModule="ColorMemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemoDetailViewController" id="MxZ-OH-VRG" customClass="MemoDetailViewController" customModule="ColorMemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7KV-kQ-gMS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VS-te-RAE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="71"/>
+            <point key="canvasLocation" x="300" y="71"/>
         </scene>
     </scenes>
     <resources>
