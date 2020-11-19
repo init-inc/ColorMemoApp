@@ -8,6 +8,7 @@
 import Foundation
 
 struct MemoData {
+    var id: String = UUID().uuidString
     var text: String = ""
     var recordDate: Date = Date()
 }
