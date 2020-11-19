@@ -63,5 +63,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let memo = memoDataList[indexPath.row]
         memoDetailViewController.configure(text: memo.text, recordDate: memo.recordDate)
         navigationController?.pushViewController(memoDetailViewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
