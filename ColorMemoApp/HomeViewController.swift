@@ -61,7 +61,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let memoDetailViewController = storyboard.instantiateViewController(withIdentifier: "MemoDetailViewController") as! MemoDetailViewController
         let memo = memoDataList[indexPath.row]
-        memoDetailViewController.configure(text: memo.text, recordDate: memo.recordDate)
+        memoDetailViewController.configure(memo: memo)
         navigationController?.pushViewController(memoDetailViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

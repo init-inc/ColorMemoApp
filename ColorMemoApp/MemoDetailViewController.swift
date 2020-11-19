@@ -10,8 +10,7 @@ import UIKit
 class MemoDetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
-    var text: String?
-    var recordDate: Date?
+    var memo: MemoData?
     
     var dateFormat: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -25,14 +24,13 @@ class MemoDetailViewController: UIViewController {
         setDoneButton()
     }
     
-    func configure(text: String, recordDate: Date) {
-        self.text = text
-        self.recordDate = recordDate
+    func configure(memo: MemoData) {
+        self.memo = memo
     }
     
     func displayData() {
-        textView.text = text
-        if let recordDate = recordDate {
+        textView.text = memo?.text
+        if let recordDate = memo?.recordDate {
             navigationItem.title = dateFormat.string(from: recordDate)
         }
     }
