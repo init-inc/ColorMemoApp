@@ -8,7 +8,8 @@
 import Foundation
 
 struct MemoData {
-    var id: String = UUID().uuidString
+    // FIXME: Realm導入後に有効化
+    // var id: String = UUID().uuidString
     var text: String = ""
     var recordDate: Date = Date()
 }
