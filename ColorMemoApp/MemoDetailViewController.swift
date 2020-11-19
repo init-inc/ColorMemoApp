@@ -31,6 +31,8 @@ class MemoDetailViewController: UIViewController {
     
     func displayData() {
         textView.text = text
-        navigationItem.title = dateFormat.string(from: recordDate!)
+        if let recordDate = recordDate {
+            navigationItem.title = dateFormat.string(from: recordDate)
+        }
     }
 }

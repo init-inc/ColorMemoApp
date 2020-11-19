@@ -40,7 +40,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func tapAddButton() {
-        print("👀tapAddButton")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let memoDetailViewController = storyboard.instantiateViewController(withIdentifier: "MemoDetailViewController") as! MemoDetailViewController
+        navigationController?.pushViewController(memoDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
