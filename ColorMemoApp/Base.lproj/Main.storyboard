@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HTR-Cu-Fms">
-                                <rect key="frame" x="10" y="54" width="414" height="818"/>
+                                <rect key="frame" x="10" y="54" width="394" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -75,7 +75,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HTR-Cu-Fms" firstAttribute="top" secondItem="3ja-qd-n2G" secondAttribute="top" constant="10" id="0QP-O7-hOt"/>
-                            <constraint firstItem="HTR-Cu-Fms" firstAttribute="trailing" secondItem="3ja-qd-n2G" secondAttribute="trailing" constant="10" id="7f1-h8-g13"/>
+                            <constraint firstItem="HTR-Cu-Fms" firstAttribute="trailing" secondItem="3ja-qd-n2G" secondAttribute="trailing" constant="-10" id="7f1-h8-g13"/>
                             <constraint firstItem="HTR-Cu-Fms" firstAttribute="bottom" secondItem="3ja-qd-n2G" secondAttribute="bottom" constant="10" id="VOg-SR-sSJ"/>
                             <constraint firstItem="HTR-Cu-Fms" firstAttribute="leading" secondItem="3ja-qd-n2G" secondAttribute="leading" constant="10" id="hGS-3L-Qo6"/>
                         </constraints>
