@@ -24,14 +24,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
-        setMemoData()
         setNavigationBarButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setMemoData()
     }
     
     func setMemoData() {
         let realm = try! Realm()
         let result = realm.objects(MemoData.self)
         memoDataList = Array(result)
+        tableView.reloadData()
     }
     
     func setNavigationBarButton() {
