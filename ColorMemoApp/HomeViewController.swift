@@ -50,6 +50,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationController?.pushViewController(memoDetailViewController, animated: true)
     }
     
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memoDataList.count
     }
