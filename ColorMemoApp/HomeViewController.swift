@@ -59,7 +59,48 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func didTapColorSettingButton() {
-        print("👀Did tap didTapColorSettingButton()!")
+        let defaultAction = UIAlertAction(title: "デフォルト", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: nil)
+        })
+        let orangeAction = UIAlertAction(title: "オレンジ", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: MyColor.orange)
+        })
+        let redAction = UIAlertAction(title: "レッド", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: MyColor.red)
+        })
+        let blueAction = UIAlertAction(title: "ブルー", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: MyColor.blue)
+        })
+        let pinkAction = UIAlertAction(title: "ピンク", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: MyColor.pink)
+        })
+        let greenAction = UIAlertAction(title: "グリーン", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: MyColor.green)
+        })
+        let purpleAction = UIAlertAction(title: "パープル", style: .default, handler: { _  -> Void in
+            self.setThemeColor(color: MyColor.purple)
+        })
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "テーマカラーを選択してください", message: "", preferredStyle:  .actionSheet)
+        
+        alert.addAction(defaultAction)
+        alert.addAction(orangeAction)
+        alert.addAction(redAction)
+        alert.addAction(blueAction)
+        alert.addAction(pinkAction)
+        alert.addAction(greenAction)
+        alert.addAction(purpleAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+    
+    func setThemeColor(color: UIColor?) {
+        let textColor: UIColor = color == nil ? .black : .white
+        let backgroundColor = color ?? .white
+        navigationController?.navigationBar.tintColor = textColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : textColor]
+        navigationController?.navigationBar.barTintColor = backgroundColor
     }
     
     // MARK: - UITableViewDelegate
