@@ -50,17 +50,13 @@ class MemoDetailViewController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
     
-    func saveData() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(memo)
-        }
-    }
-    
     // MARK: - UITextViewDelegate
     func textViewDidChange(_ textView: UITextView) {
-        memo.text = textView.text
-        memo.recordDate = Date()
-        saveData()
+        let realm = try! Realm()
+        try! realm.write {
+            memo.text = textView.text
+            memo.recordDate = Date()
+            realm.add(memo)
+        }
     }
 }
