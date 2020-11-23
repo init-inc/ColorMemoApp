@@ -9,10 +9,15 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    let themeColorTypeKey = "ThemeColorType"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UINavigationBar.appearance().tintColor = .black
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().barTintColor = .white
+        let themeColorTypeInt = UserDefaults.standard.integer(forKey: themeColorTypeKey)
+        let themeColorType = MyColorType(rawValue: themeColorTypeInt) ?? .default
+        let textColor: UIColor = themeColorType == .default ? .black : .white
+        UINavigationBar.appearance().tintColor = textColor
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: textColor]
+        UINavigationBar.appearance().barTintColor = themeColorType.color
         return true
     }
 
