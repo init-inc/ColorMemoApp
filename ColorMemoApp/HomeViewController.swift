@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
         return dateFormatter
     }
+    let themeColorTypeKey = "ThemeColorType"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         setNavigationBarButton()
         setLeftNavigationBarButton()
+        
+        let themeColorTypeInt = UserDefaults.standard.integer(forKey: themeColorTypeKey)
+        let themeColorType = MyColorType(rawValue: themeColorTypeInt) ?? .default
+        setThemeColor(type: themeColorType)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,25 +65,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func didTapColorSettingButton() {
         let defaultAction = UIAlertAction(title: "デフォルト", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: nil)
+            self.setThemeColor(type: .default)
         })
         let orangeAction = UIAlertAction(title: "オレンジ", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: MyColor.orange)
+            self.setThemeColor(type: .orange)
         })
         let redAction = UIAlertAction(title: "レッド", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: MyColor.red)
+            self.setThemeColor(type: .red)
         })
         let blueAction = UIAlertAction(title: "ブルー", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: MyColor.blue)
+            self.setThemeColor(type: .blue)
         })
         let pinkAction = UIAlertAction(title: "ピンク", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: MyColor.pink)
+            self.setThemeColor(type: .pink)
         })
         let greenAction = UIAlertAction(title: "グリーン", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: MyColor.green)
+            self.setThemeColor(type: .green)
         })
         let purpleAction = UIAlertAction(title: "パープル", style: .default, handler: { _  -> Void in
-            self.setThemeColor(color: MyColor.purple)
+            self.setThemeColor(type: .purple)
         })
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
         let alert = UIAlertController(title: "テーマカラーを選択してください", message: "", preferredStyle:  .actionSheet)
@@ -95,12 +100,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         present(alert, animated: true)
     }
     
-    func setThemeColor(color: UIColor?) {
-        let textColor: UIColor = color == nil ? .black : .white
-        let backgroundColor = color ?? .white
+    func setThemeColor(type: MyColorType) {
+        let textColor: UIColor = type == .default ? .black : .white
         navigationController?.navigationBar.tintColor = textColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : textColor]
-        navigationController?.navigationBar.barTintColor = backgroundColor
+        navigationController?.navigationBar.barTintColor = type.color
+        saveThemeColor(type: type)
+    }
+    
+    func saveThemeColor(type: MyColorType) {
+        UserDefaults.standard.setValue(type.rawValue, forKey: themeColorTypeKey)
     }
     
     // MARK: - UITableViewDelegate
