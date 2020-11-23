@@ -11,7 +11,7 @@ import RealmSwift
 class MemoDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     
-    var memo: MemoData?
+    var memo = MemoData()
     
     var dateFormat: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -32,10 +32,8 @@ class MemoDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     func displayData() {
-        textView.text = memo?.text
-        if let recordDate = memo?.recordDate {
-            navigationItem.title = dateFormat.string(from: recordDate)
-        }
+        textView.text = memo.text
+        navigationItem.title = dateFormat.string(from: memo.recordDate)
     }
     
     func setDoneButton() {
@@ -53,18 +51,16 @@ class MemoDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     func saveData() {
-        if let memo = memo {
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(memo)
-            }
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(memo)
         }
     }
     
     // MARK: - UITextViewDelegate
     func textViewDidChange(_ textView: UITextView) {
-        memo?.text = textView.text
-        memo?.recordDate = Date()
+        memo.text = textView.text
+        memo.recordDate = Date()
         saveData()
     }
 }
