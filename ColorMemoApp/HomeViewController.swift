@@ -29,7 +29,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func setMemoData() {
         for i in 1...10 {
-            let memo = MemoData(text: "このメモは\(i)番目です！", recordDate: Date())
+            let memo = MemoData()
+            memo.text = "このメモは\(i)番目です！"
+            memo.recordDate = Date()
             memoDataList.append(memo)
         }
     }

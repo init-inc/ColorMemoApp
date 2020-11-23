@@ -53,9 +53,11 @@ class MemoDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     func saveData() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(memo)
+        if let memo = memo {
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(memo)
+            }
         }
     }
     
