@@ -41,7 +41,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func setMemoData() {
         let realm = try! Realm()
         let result = realm.objects(MemoData.self)
-        memoDataList = Array(result)
+        memoDataList = Array(result).sorted(by: { $0.recordDate > $1.recordDate })
         tableView.reloadData()
     }
     
