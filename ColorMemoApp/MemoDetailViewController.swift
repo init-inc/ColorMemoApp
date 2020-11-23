@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import RealmSwift
 
-class MemoDetailViewController: UIViewController {
+class MemoDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     
     var memo: MemoData?
@@ -22,6 +23,8 @@ class MemoDetailViewController: UIViewController {
         super.viewDidLoad()
         displayData()
         setDoneButton()
+        
+        textView.delegate = self
     }
     
     func configure(memo: MemoData) {
@@ -47,5 +50,19 @@ class MemoDetailViewController: UIViewController {
     
     @objc func tapDoneButton() {
         view.endEditing(true)
+    }
+    
+    func saveData() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(memo)
+        }
+    }
+    
+    // MARK: - UITextViewDelegate
+    func textViewDidChange(_ textView: UITextView) {
+        memo?.text = textView.text
+        memo?.recordDate = Date()
+        saveData()
     }
 }
