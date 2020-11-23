@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -28,12 +29,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func setMemoData() {
-        for i in 1...10 {
-            let memo = MemoData()
-            memo.text = "このメモは\(i)番目です！"
-            memo.recordDate = Date()
-            memoDataList.append(memo)
-        }
+        let realm = try! Realm()
+        let result = realm.objects(MemoData.self)
+        memoDataList = Array(result)
     }
     
     func setNavigationBarButton() {
