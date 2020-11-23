@@ -1,0 +1,6 @@
+framework module Pods_ColorMemoApp {
+  umbrella header "Pods-ColorMemoApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

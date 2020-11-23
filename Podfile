@@ -2,10 +2,8 @@
 # platform :ios, '9.0'
 
 target 'ColorMemoApp' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for ColorMemoApp
+  pod 'RealmSwift'
 
   target 'ColorMemoAppTests' do
     inherit! :search_paths
