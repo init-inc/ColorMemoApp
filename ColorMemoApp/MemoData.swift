@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct MemoData {
+class MemoData: Object {
     var id: String = UUID().uuidString
     var text: String = ""
     var recordDate: Date = Date()
