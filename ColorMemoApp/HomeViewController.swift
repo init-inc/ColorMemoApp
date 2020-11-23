@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         
         setNavigationBarButton()
+        setLeftNavigationBarButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let memoDetailViewController = storyboard.instantiateViewController(withIdentifier: "MemoDetailViewController") as! MemoDetailViewController
         navigationController?.pushViewController(memoDetailViewController, animated: true)
+    }
+    
+    func setLeftNavigationBarButton() {
+        let leftbuttonImage = UIImage(named: "colorSettingIcon")
+        let leftButton = UIBarButtonItem(image: leftbuttonImage, style: .plain,
+                                         target: self, action: #selector(didTapColorSettingButton))
+        navigationItem.leftBarButtonItem = leftButton
+    }
+    
+    @objc func didTapColorSettingButton() {
+        print("👀Did tap didTapColorSettingButton()!")
     }
     
     // MARK: - UITableViewDelegate
