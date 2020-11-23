@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class MemoData: Object {
-    var id: String = UUID().uuidString
-    var text: String = ""
-    var recordDate: Date = Date()
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var text: String = ""
+    @objc dynamic var recordDate: Date = Date()
 }
